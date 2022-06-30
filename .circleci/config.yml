@@ -27,7 +27,6 @@ jobs:
           command: "echo Hello, World!"
 
 workflows:
-  say-hello-workflow:
+  android-test-workflow:
     jobs:
       - unit-test
-      - say-hello
