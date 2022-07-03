@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   android: circleci/android@1.0.3
   gcp-cli: circleci/gcp-cli@2.2.0
+
 jobs:
   unit-test:
     executor:
@@ -26,7 +27,16 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
 
+  deploy-to-firebase:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: "Deploy"
+          command: "fastlane distribute"
+
 workflows:
   android-test-workflow:
     jobs:
       - unit-test
+      - deploy-to-firebase
