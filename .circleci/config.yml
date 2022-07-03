@@ -27,16 +27,7 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
 
-  deploy-to-firebase:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: "Deploy"
-          command: "fastlane distribute"
-
 workflows:
   android-test-workflow:
     jobs:
       - unit-test
-      - deploy-to-firebase
